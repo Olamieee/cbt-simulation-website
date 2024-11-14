@@ -1,88 +1,111 @@
-# WASSCE CBT Simulation Overview
-A web platform designed to simulate the West African Senior School Certificate Examination (WASSCE) using advanced Computer-Based Test (CBT) technology. The project is aimed at providing students with a real-time exam environment to practice, gain familiarity with the exam format, and reduce exam anxiety.
 
-Features</strong><br>
-Timed Mock Exams: Simulate real WASSCE exams with timed tests for both Oral English and Reading Comprehension. <br>
-User-Friendly Interface: Easy navigation and interactive design to enhance the user experience.<br>
-Instant Feedback: Get feedback after each test to identify strengths and areas for improvement.<br>
-Research-Based Design: Developed with guidance from Dr. Faloye Bankole Olagunju, this platform is backed by institutional research.
+# WASSCE CBT Simulation
 
+## Overview
 
-<strong>Technologies Used</strong><br>
-1. Django: Backend framework for building the web application.<br>
-2. HTML/CSS: For structuring and styling the web pages.<br>
-3. JavaScript: For any interactive features on the frontend<br>.
-4. PostgreSQL: Database for storing user information, tests, and feedback.
+The **WASSCE CBT Simulation** is a web platform designed to simulate the West African Senior School Certificate Examination (WASSCE) using advanced Computer-Based Test (CBT) technology. This project aims to provide students with a real-time exam environment to practice, gain familiarity with the exam format, and reduce exam anxiety.
 
-<strong>Installation</strong><br>
-Prerequisites
-Python 3.x
-PostgreSQL (or your preferred database)
-Django 5.1.1
-Required libraries in requirements.txt
+## Features
 
-Steps to Install Locally
-Clone the repository:
+- **Timed Mock Exams**: Simulate real WASSCE exams with timed tests for both **Oral English** and **Reading Comprehension**.
+- **User-Friendly Interface**: Easy navigation and interactive design to enhance the user experience.
+- **Instant Feedback**: Get feedback after each test to identify strengths and areas for improvement.
+- **Research-Based Design**: Developed with guidance from **Dr. Faloye Bankole Olagunju** (PhD), this platform is backed by institutional research.
 
-bash
-Copy code
-git clone https://github.com/YourUsername/cbt_simulation.git
-cd cbt_simulation
-Set up a virtual environment:
+## Technologies Used
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # On Windows use 'venv\Scripts\activate'
-Install the dependencies:
+1. **Django**: Backend framework for building the web application.
+2. **HTML/CSS**: For structuring and styling the web pages.
+3. **JavaScript**: For any interactive features on the frontend.
+4. **PostgreSQL**: Database for storing user information, tests, and feedback.
 
-bash
-pip install -r requirements.txt
-Set up your PostgreSQL database:
+## Installation
 
-Create a new PostgreSQL database.
+### Prerequisites
 
-Update the database settings in settings.py:
+- **Python 3.x**
+- **PostgreSQL** (or your preferred database)
+- **Django 5.1.1**
+- Required libraries (listed in `requirements.txt`)
 
-python
+### Steps to Install Locally
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_database_name',
-        'USER': 'database_user',
-        'PASSWORD': 'your_database_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-<br>
-Run migrations to set up your database: <br>
+1. **Clone the repository**:
 
-bash
-python manage.py migrate
-<br>
+   ```bash
+   git clone https://github.com/YourUsername/cbt_simulation.git
+   cd cbt_simulation
+   ```
 
-Create a superuser to access the Django admin:
-bash
-python manage.py createsuperuser
-<br>
+2. **Set up a virtual environment**:
 
-Start the development server:
-bash
-python manage.py runserver
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use 'venv\Scriptsctivate'
+   ```
 
-Visit http://127.0.0.1:8000/ in your browser to see the site in action.
+3. **Install the dependencies**:
 
-<strong>Usage</strong><br>
-Once the platform is running, users can:<br>
-Take a CBT Simulation by selecting from available tests.<br>
-Practice Oral English and Reading Comprehension under timed conditions.<br>
-Submit feedback or view test results after completion.<br>
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-<strong>Contributing</strong><br>
-If you'd like to contribute to this project, please fork the repository, create a new branch for your feature, and submit a pull request with your changes.
+4. **Set up your PostgreSQL database**:
 
-<strong>Authors</strong><br>
-Dr. Faloye Bankole Olagunju (PhD) - Principal Investigator<br>
-Alonge Olamide Samson - Project Lead and Developer | alongeola16@gmail.com
+   - Create a new PostgreSQL database.
+   - Update the `DATABASES` configuration in `settings.py`:
+
+     ```python
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.postgresql',
+             'NAME': 'your_database_name',
+             'USER': 'database_user',
+             'PASSWORD': 'your_database_password',
+             'HOST': 'localhost',
+             'PORT': '5432',
+         }
+     }
+     ```
+
+5. **Run migrations** to set up your database:
+
+   ```bash
+   python manage.py migrate
+   ```
+
+6. **Create a superuser** to access the Django admin:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+7. **Start the development server**:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+8. **Visit** `http://127.0.0.1:8000/` in your browser to see the site in action.
+
+## Usage
+
+Once the platform is running, users can:
+
+- Take a **CBT Simulation** by selecting from available tests.
+- Practice **Oral English** and **Reading Comprehension** under timed conditions.
+- Submit feedback or view test results after completion.
+
+## Contributing
+
+If you'd like to contribute to this project, please:
+
+1. **Fork** the repository.
+2. **Create a new branch** for your feature.
+3. **Submit a pull request** with your changes.
+
+## Authors
+
+- **Dr. Faloye Bankole Olagunju** (PhD) - Principal Investigator
+- **Alonge Olamide Samson** - Project Lead and Developer  
+  Email: [alongeola16@gmail.com](mailto:alongeola16@gmail.com)
