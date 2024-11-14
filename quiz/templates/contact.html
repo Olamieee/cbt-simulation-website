@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <section class="contact-container">
+        <h2>We'd Love to Hear From You</h2>
+        <p>Fill out the form below to send us a message or get in touch via our social media links.</p>
+    
+        <div class="form-wrapper">
+            <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" required></textarea>
+    
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    
+        <p>Follow us on social media:</p>
+        <ul class="social-links">
+            <li><a href="https://www.facebook.com/kole.faloye?mibextid=ZbWKwL" target="_blank">Facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/bankole-faloye-480b9270" target="_blank">Linkedin</a></li>
+            <li><a href="https://orcid.org/0000-0002-3442-0498" target="_blank">Orcid</a></li>
+            
+        </ul>
+    </section>
+    
+    
+    <footer>
+        <a href="{% url 'home' %}">Home</a>
+        <p>&copy; 2024 WASSCE CBT Simulation. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

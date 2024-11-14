@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review</title>
+    <style>
+        /* Add your custom styling for form hover and button here */
+        #reviewForm {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #reviewForm:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        button:hover {
+            background-color: #FF8C00;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f3eac2; color: #333; margin: 0; padding: 0;">
+    <!-- Review Form -->
+    <div id="reviewForm" style="max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <h2 style="font-size: 1.5em; color: #333; margin-bottom: 10px;">We’d love your feedback!</h2>
+        <p style="font-size: 1em; color: #666; margin-bottom: 20px;">Please leave a review below.</p>
+        
+        <form action="{% url 'submit_review' %}" method="POST">
+            {% csrf_token %}
+            <label for="review" style="font-weight: bold; color: #333;">Your Review</label>
+            <textarea name="review" id="review" rows="4" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; resize: none; margin-bottom: 15px;"></textarea>
+            
+            <button type="submit" style="background-color: #FFA500; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;">Submit Review</button>
+        </form>
+    </div>
+</body>
+</html>

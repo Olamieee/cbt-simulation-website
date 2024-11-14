@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>{{ quiz_name }}</h1>
+
+        <!-- Timer -->
+        <div id="timer">Time left: <span id="countdown"></span></div>
+
+        <form method="POST" onsubmit="return confirmSubmit()">
+            {% csrf_token %}
+            <div class="question-navigation">
+                <div id="question-container">
+                    {% for question in questions %}
+                    <div class="question" id="question-{{ forloop.counter }}">
+                        <h3>{{ question.question_text }}</h3>
+                        <ul class="answers">
+                            <li>
+                                <label>
+                                    <input type="radio" name="question_{{ question.id }}" value="A"> 
+                                    {{ question.option_a }}
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="question_{{ question.id }}" value="B"> 
+                                    {{ question.option_b }}
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="question_{{ question.id }}" value="C"> 
+                                    {{ question.option_c }}
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="question_{{ question.id }}" value="D"> 
+                                    {{ question.option_d }}
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="navigation-buttons">
+                    <button type="button" id="prev-button" disabled>Previous</button>
+                    <button type="button" id="next-button">Next</button>
+                    <button type="submit" id="submit-button" disabled>Submit Test</button>
+                </div>
+            </div>
+        </form>
+        <script>
+            function confirmSubmit() {
+                return confirm("Are you sure you want to submit your answers?");
+            }
+        </script>
+    </div>
+
+    <script>
+        let timeLeft = {{ time_limit_in_seconds }};
+        const countdownElement = document.getElementById('countdown');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            countdownElement.innerHTML = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+            timeLeft--;
+
+            if (timeLeft >= 0) {
+                setTimeout(updateTimer, 1000);
+            } else {
+                document.forms[0].submit();  // Auto-submit when time runs out
+            }
+        }
+        updateTimer();
+
+        // Question navigation logic
+        let currentQuestionIndex = 0;
+        const questions = document.querySelectorAll('.question');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const submitButton = document.getElementById('submit-button');
+
+        function showQuestion(index) {
+            questions.forEach((q, i) => {
+                q.style.display = i === index ? 'block' : 'none';
+            });
+            prevButton.disabled = index === 0;
+            nextButton.disabled = index === questions.length - 1;
+            submitButton.disabled = index !== questions.length - 1;
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }
+        });
+
+        // Initialize with the first question
+        showQuestion(currentQuestionIndex);
+    </script>
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function(event) {
+            event.preventDefault();  // Prevents form submission for confirmation
+            const confirmSubmit = confirm("Are you sure you want to submit the test?");
+            if (confirmSubmit) {
+                document.forms[0].submit();  // Submits the form if user confirms
+            }
+        });    
+</body>
+</html>

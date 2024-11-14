@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/reading_quiz.css' %}">
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>{{ quiz_name }}</h1>
+        <div id="timer">Time Remaining: <span id="time">00:00</span></div>
+
+        <form method="post" onsubmit="return confirmSubmit()">
+            {% csrf_token %}
+
+            {% for pwq in passages_with_questions %}
+            <div class="passage-section">
+                <h2>Passage {{ forloop.counter }}</h2>
+                <p>{{ pwq.passage.passage_text }}</p>
+
+                {% if pwq.questions %}
+                <p><strong>Questions for this passage:</strong></p>
+                {% for question in pwq.questions %}
+                <div class="question">
+                    <p><strong>Question {{ forloop.counter }}:</strong> {{ question.question_text }}</p>
+                    <ul class="answers">
+                        <li>
+                            <label>
+                                <input type="radio" name="question_{{ question.id }}" value="A">
+                                {{ question.option_a }}
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="question_{{ question.id }}" value="B">
+                                {{ question.option_b }}
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="question_{{ question.id }}" value="C">
+                                {{ question.option_c }}
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="question_{{ question.id }}" value="D">
+                                {{ question.option_d }}
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p><strong>No questions found for this passage.</strong></p>
+                {% endif %}
+            </div>
+            <hr>
+            {% endfor %}
+
+            <button type="submit">Submit Quiz</button>
+        </form>
+        
+        <script>
+            function confirmSubmit() {
+                return confirm("Are you sure you want to submit your answers?");
+            }
+        </script>
+    </div>
+
+    <script>
+        let timer = {{ time_limit_in_seconds }}; // time in seconds
+        const interval = setInterval(() => {
+            let minutes = Math.floor(timer / 60);
+            let seconds = timer % 60;
+            document.getElementById("time").textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            timer--;
+
+            if (timer < 0) {
+                clearInterval(interval);
+                document.querySelector("form").submit();
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

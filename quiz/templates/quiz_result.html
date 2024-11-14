@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+    {% load static %}
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f3eac2; color: #333; margin: 0; padding: 0;">
+
+    <div style="text-align: center; padding: 40px;">
+        <h1 style="font-size: 2.5em; color: #333;">Quiz Results</h1>
+
+        <!-- Animated Score Display -->
+        <p style="font-size: 1.2em;">Dear <strong>{{ name }}</strong>, you scored:</p>
+        <p class="score" style="font-size: 2.5em; font-weight: bold; color: #4CAF50; animation: pop-in 1.2s ease;">
+            {{ score }} out of {{ total_questions }}
+        </p>
+
+        <!-- Action Links -->
+        <div style="margin: 20px 0;">
+            {% if quiz_type == 'oral' %}
+                <a href="{% url 'oral_quiz' %}" style="color: #4CAF50; font-weight: bold; text-decoration: none; margin-right: 15px; transition: color 0.3s ease;">
+                    Try Again
+                </a>
+            {% else %}
+                <a href="{% url 'reading_comprehension_quiz' %}" style="color: #4CAF50; font-weight: bold; text-decoration: none; margin-right: 15px; transition: color 0.3s ease;">
+                    Try Again
+                </a>
+            {% endif %}
+            | 
+            <a href="{% url 'home' %}" style="color: #4CAF50; font-weight: bold; text-decoration: none; margin-left: 15px; transition: color 0.3s ease;">
+                Return to Homepage
+            </a>
+        </div>
+        
+
+        <!-- Link Hover Effects -->
+        <style>
+            a:hover {
+                color: #d9534f;
+            }
+            @keyframes pop-in {
+                0% { transform: scale(0.5); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        </style>
+
+        <!-- Review Form -->
+        <div id="reviewForm" style="max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <h2 style="font-size: 1.5em; color: #333; margin-bottom: 10px;">We’d love your feedback!</h2>
+            <p style="font-size: 1em; color: #666; margin-bottom: 20px;">Please leave a review before retaking the test or returning to the homepage.</p>
+            
+            <form action="{% url 'submit_review' %}" method="POST">
+                {% csrf_token %}
+                <label for="review" style="font-weight: bold; color: #333;">Your Review</label>
+                <textarea name="review" id="review" rows="4" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; resize: none; margin-bottom: 15px;"></textarea>
+                
+                <button type="submit" style="background-color: #FFA500; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Form Hover Effect -->
+        <style>
+            #reviewForm:hover {
+                transform: scale(1.02);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+            button:hover {
+                background-color: #FF8C00;
+            }
+        </style>
+    </div>
+
+    <footer>
+        <a href="{% url 'home' %}">Home</a>
+        <p>&copy; 2024 WAEC CBT Simulation. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

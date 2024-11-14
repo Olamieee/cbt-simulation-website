@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>About WASSCE CBT Simulation</h1>
+    </header>
+
+    <section class="about-content">
+        <p>Our platform provides a real-world simulation of WASSCE CBT exams, helping students practice under real exam
+            conditions. We believe that by experiencing a timed, interactive, and stress-free environment, students can
+            better prepare for their final exams.</p>
+
+        <h3>Our Mission</h3>
+        <p>Our mission is to equip students with the tools and confidence they need to excel in the WASSCE exams. This
+            innovation aims to enhance accessibility and ease of exam preparation, particularly for students across West
+            Africa. By leveraging advanced CBT technology, students gain familiarity with the exam format, improve
+            test-taking skills, and build confidence as the exam day approaches.</p>
+
+        <p>The platform is designed to help manage CBT phobia, especially in areas such as Oral English and Reading
+            Comprehension, and is focused on making exam preparation more engaging and effective.</p>
+
+        <h2>Why Choose WASSCE CBT Simulation?</h2>
+        <ul>
+            <li>Timed mock exams to simulate actual WASSCE conditions</li>
+            <li>Interactive and user-friendly interface for a stress-free experience</li>
+            <li>Instant feedback and performance tracking to help improve skills</li>
+        </ul>
+
+        <h3>Our Research and Academic Backing</h3>
+        <div class="research-details">
+            <img src="{% static 'images/personal.png' %}" alt="Dr. Faloye Bankole Olagunju" 
+                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-right: 20px;">
+            <p><strong>Dr. Faloye Bankole Olagunju (PhD)</strong></p>
+            <p><em>Principal Investigator</em></p>
+            <p><strong>Institution-Based Research (2022-2024 Grant Cycle)</strong></p>
+            <p>Dr. Faloye has been instrumental in guiding the development of this platform, ensuring its effectiveness and impact on exam preparation. His academic expertise and commitment to educational innovation provide a solid foundation for the success of our project.</p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="{% url 'home' %}">Home</a>
+        <p>&copy; 2024 WASSCE CBT Simulation. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

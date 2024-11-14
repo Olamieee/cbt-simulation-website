@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ quiz_name }} Details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/quiz.css' %}">
+</head>
+<body>
+    <h1>{{ quiz_name }}</h1>
+    <p>Number of Questions: {{ question_count }}</p>
+    <p>Time Limit: {{ time_limit }} minutes</p>
+    
+    <a href="{% url 'quiz_page' quiz_name %}">Start Quiz</a>
+</body>
+</html>

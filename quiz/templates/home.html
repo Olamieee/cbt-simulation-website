@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WASSCE CBT Simulation</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'cbt_simulation' %}">CBT Simulation</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <!-- Central Welcome Message -->
+        <div class="welcome-message">
+            <img src="{% static 'images/personal.png' %}" alt="Your Picture" class="center-image">
+            <h1>WELCOME TO THE PROTOTYPE OF THE CBT SIMULATOR FOR WEST AFRICAN SENIOR SCHOOL CERTIFICATE EXAMINATION
+                (WASSCE)</h1>
+            <p>This platform is part of a pioneering project, funded by TetFund and designed by Dr. Faloye Bankole
+                Olagunjy (PhD) at Bamidele Olumilua University of Education, Science, and Technology, Ikere-Ekiti,
+                Nigeria. The objective of this Institution-Based Research (IBR) project is to create a simulation tool
+                that prepares senior secondary students for the West African Senior School Certificate Examination
+                (WASSCE) through an advanced Computer-Based Test (CBT) experience.</p>
+
+            <p>This innovation aims to enhance accessibility and ease of examination preparation, particularly for
+                students across West Africa. By leveraging innovative CBT technology, students can gain familiarity with
+                the examination format, improve their test-taking skills, and build confidence as the examination
+                approaches. In a nutshell, this project intends to manage CBT phobia for students in the area of Oral
+                English and Reading Comprehension.</p>
+
+            <p>Thank you for visiting, and we hope this platform becomes a valuable tool towards charting a veritable
+                course in achieving success in CBT in the WASSCE.</p>
+
+          <!--  <p><strong>Dr. Faloye Bankole Olagunju (PhD)</strong><br>Principal Investigator<br>Institution-Based
+                Research<br>2022 – 2024 Grant Cycle</p> --> 
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="{% static 'images/banner1.png' %}" alt="CBT Simulation Banner">
+        <div class="hero-text">
+            <h1>Experience WASSCE CBT Simulation</h1>
+            <p>Prepare for success in your WASSCE exams with our CBT simulation.</p>
+            <a href="{% url 'cbt_simulation' %}" class="btn">Go To Test</a>
+            <a href="{% url 'about' %}" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Say:</h2>
+        <div class="testimonial-list">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-card">
+                <p class="testimonial-text">{{ testimonial.review }}</p>
+                <div class="testimonial-author">
+                    <p>{{ testimonial.user.name }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No testimonials yet. Click <a href="{% url 'submit_review_homepage' %}">here</a> to submit a review.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WASSCE CBT Simulation. All Rights Reserved.</p>
+        <p>This website is sponsored by:</p>
+        <div class="sponsor-logos">
+            <img src="{% static 'images/tetfund.png' %}" alt="TETFUND Logo" class="sponsor-logo">
+            <img src="{% static 'images/bouesti.jpeg' %}" alt="BOUESTI Logo" class="sponsor-logo">
+            <img src="{% static 'images/cerad.jpg' %}" alt="CERAD Logo" class="sponsor-logo">
+        </div>
+    </footer>
+    <style>
+        .welcome-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .center-image {
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        .sponsor-logo {
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT Simulation</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>WASSCE CBT Simulation</h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <h2>Welcome to WASSCE CBT Simulation</h2>
+        <p>This platform provides a simulation of the WASSCE CBT exam to help you practice under real-time conditions. Choose the type of test you want to take: either the Oral Test or the Reading Comprehension Test.</p>
+        <p>Follow the instructions on each test page to begin. Once you start, you will have a limited amount of time to answer all the questions. Make sure to answer every question before submitting.</p>
+    </section>
+
+    <!-- Test Options -->
+    <section class="test-options">
+        <div class="test-option">
+            <h3>Oral Test</h3>
+            <p>This test simulates the WASSCE Oral English section. It includes questions on pronunciation, stress patterns, and intonation.</p>
+            <p>The details for this test includes 30 questions and time to complete the test is 30 minutes. Click below to start!</p>
+            <a href="{% url 'oral_quiz' %}" class="btn">Start</a>
+        </div>
+
+        <div class="test-option">
+            <h3>Reading Comprehension Test</h3>
+            <p>This test focuses on Reading Comprehension passages commonly found in WASSCE exams. You will answer questions based on the passage you read.</p>
+            <p>The details for this test includes 10 comprehension passages with 10 questions below each passage, and time to complete the test is 45 minutes. Click below to start!</p>
+            <a href="{% url 'reading_comprehension_quiz' %}" class="btn">Start</a>
+        </div>
+    </section>
+
+    <footer>
+        <a href="{% url 'home' %}">Home</a>
+        <p>&copy; 2024 WASSCE CBT Simulation. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
