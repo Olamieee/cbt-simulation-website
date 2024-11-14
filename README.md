@@ -25,7 +25,7 @@ The **WASSCE CBT Simulation** is a web platform designed to simulate the West Af
 
 - **Python 3.x**
 - **PostgreSQL** (or your preferred database)
-- **Django 5.1.1**
+- **Django**
 - Required libraries (listed in `requirements.txt`)
 
 ### Steps to Install Locally
