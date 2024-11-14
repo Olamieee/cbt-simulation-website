@@ -33,7 +33,7 @@ The **WASSCE CBT Simulation** is a web platform designed to simulate the West Af
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/YourUsername/cbt_simulation.git
+   git clone https://github.com/Olamieee/cbt-simulation-website.git
    cd cbt_simulation
    ```
 
